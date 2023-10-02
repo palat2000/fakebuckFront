@@ -1,3 +1,4 @@
+import { ToastContainer } from "react-toastify";
 import Loading from "./components/Loading";
 import useAuth from "./hooks/use-auth";
 import Route from "./router/Route";
@@ -9,7 +10,10 @@ function App() {
       <Loading />
     </div>
   ) : (
-    <Route />
+    <>
+      <Route />
+      <ToastContainer />
+    </>
   );
 }
 

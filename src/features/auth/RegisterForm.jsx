@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Joi from "joi";
+import { toast } from "react-toastify";
 import RegisterInput from "./RegisterInput";
 import InputErrorMessage from "./InputErrorMessage";
 import useAuth from "../../hooks/use-auth";
@@ -48,7 +49,18 @@ function RegisterForm() {
       return setErrorMessage(validationError);
     }
     setErrorMessage({});
-    register(input);
+    register(input).catch((err) => {
+      toast.error(err.response?.data.message, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    });
   };
 
   const handleChangeInput = (e) => {

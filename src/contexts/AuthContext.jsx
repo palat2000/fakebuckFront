@@ -21,29 +21,15 @@ function AuthContextProvider({ children }) {
   }, []);
 
   const login = async (credential) => {
-    try {
-      setInitialLoading(true);
-      const { data } = await axios.post("/auth/login", credential);
-      addAccessToken(data.accessToken);
-      setAuthUser(data.user);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setInitialLoading(false);
-    }
+    const { data } = await axios.post("/auth/login", credential);
+    addAccessToken(data.accessToken);
+    setAuthUser(data.user);
   };
 
   const register = async (credential) => {
-    try {
-      setInitialLoading(true);
-      const { data } = await axios.post("/auth/register", credential);
-      addAccessToken(data.accessToken);
-      setAuthUser(data.user);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setInitialLoading(false);
-    }
+    const { data } = await axios.post("/auth/register", credential);
+    addAccessToken(data.accessToken);
+    setAuthUser(data.user);
   };
 
   return (

@@ -16,7 +16,7 @@ function Menu() {
           key={item.id}
           to={item.to}
           Icon={item.Icon}
-          className={pathname === item.to ? "fill-blue-600" : "fill-gray-300"}
+          active={pathname === item.to}
         />
       ))}
     </nav>

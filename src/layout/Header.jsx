@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { FacebookIcon } from "../icon/index";
 import Menu from "./Menu";
+import Dropdown from "./Dropdown";
 
 function Header() {
   return (
@@ -11,7 +12,9 @@ function Header() {
         </Link>
       </div>
       <Menu />
-      <div></div>
+      <div className="justify-self-end self-center">
+        <Dropdown />
+      </div>
     </header>
   );
 }

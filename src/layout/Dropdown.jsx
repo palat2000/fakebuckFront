@@ -22,13 +22,13 @@ function Dropdown() {
   return (
     <div ref={dropdownRef} className="relative">
       <div className="cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
-        <Avatar />
+        <Avatar src={authUser.profileImage} />
       </div>
       {isOpen && (
         <div className="w-64 bg-white absolute right-1 translate-y-1 border rounded-lg shadow-xl p-2">
-          <Link onClick={() => setIsOpen(false)} to="/profile/aaaa">
+          <Link onClick={() => setIsOpen(false)} to={`/profile/${authUser.id}`}>
             <div className=" flex gap-4 p-2 items-center rounded-xl hover:bg-gray-100">
-              <Avatar profile={authUser.profileImage} className="h-14" />
+              <Avatar src={authUser.profileImage} className="h-14" />
               <div>
                 <div className="font-semibold">
                   {authUser.firstName + " " + authUser.lastName}

@@ -17,7 +17,7 @@ function AuthUserAction() {
         title="Edit profile"
         onClose={() => setIsOpen(false)}
       >
-        <EditProfileForm />
+        <EditProfileForm onSuccess={() => setIsOpen(false)} />
       </Modal>
     </div>
   );

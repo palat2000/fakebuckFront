@@ -1,9 +1,10 @@
 import { useRef, useState } from "react";
 import FormButton from "./FormButton";
 
-function PictureForm({ title, children }) {
+function PictureForm({ title, children, initialSrc, onSave }) {
   const [file, setFile] = useState(null);
   const inputEl = useRef(null);
+
   return (
     <div>
       <input
@@ -21,7 +22,7 @@ function PictureForm({ title, children }) {
         <div>
           {file && (
             <>
-              <FormButton>Save</FormButton>
+              <FormButton onClick={() => onSave(file)}>Save</FormButton>
               <FormButton
                 onClick={() => {
                   setFile(null);
@@ -36,7 +37,7 @@ function PictureForm({ title, children }) {
         </div>
       </div>
       <div className="flex justify-center">
-        {children(file ? URL.createObjectURL(file) : undefined, () =>
+        {children(file ? URL.createObjectURL(file) : initialSrc, () =>
           inputEl.current.click()
         )}
       </div>

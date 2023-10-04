@@ -23,7 +23,7 @@ function ProfilePage() {
         setLoading(false);
       }
     };
-    if (authUser.id === +profileId) {
+    if (profileId === "me") {
       setProfileUser(authUser);
     } else {
       fetch();

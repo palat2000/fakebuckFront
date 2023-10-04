@@ -28,11 +28,11 @@ function ProfileInfo({ profileUser }) {
         </div>
       </div>
       <div>
-        <ReceiverAction />
+        {/* <ReceiverAction /> */}
         {/* <RequesterAction /> */}
         {/* <FriendAction /> */}
         {/* <UnknownAction /> */}
-        {/* <AuthUserAction /> */}
+        <AuthUserAction />
       </div>
     </div>
   );

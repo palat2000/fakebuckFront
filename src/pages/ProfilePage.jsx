@@ -8,27 +8,29 @@ import useAuth from "../hooks/use-auth";
 
 function ProfilePage() {
   const [profileUser, setProfileUser] = useState({});
+  const [statusWithAuthUser, setStatusWithAuthUser] = useState("");
+  const [profileFriend, setProfileFriend] = useState([]);
   const [loading, setLoading] = useState(false);
   const { profileId } = useParams();
   const { authUser } = useAuth();
+  const isAuthUser = +profileId === authUser.id;
+
   useEffect(() => {
     const fetch = async () => {
       try {
         setLoading(true);
         const { data } = await axios.get("/user/" + profileId);
         setProfileUser(data.user);
+        setStatusWithAuthUser(data.status);
+        setProfileFriend(data.friends);
       } catch (err) {
         console.log(err);
       } finally {
         setLoading(false);
       }
     };
-    if (profileId === "me") {
-      setProfileUser(authUser);
-    } else {
-      fetch();
-    }
-  }, [profileId, authUser]);
+    fetch();
+  }, [profileId]);
   if (!profileUser) {
     return (
       <h1 className="text-center p-8 text-3xl font-bold">
@@ -42,8 +44,17 @@ function ProfilePage() {
         <Loading />
       ) : (
         <>
-          <ProfileCover coverImage={profileUser?.coverImage} />
-          <ProfileInfo profileUser={profileUser} />
+          <ProfileCover
+            coverImage={
+              isAuthUser ? authUser.coverImage : profileUser?.coverImage
+            }
+          />
+          <ProfileInfo
+            profileUser={isAuthUser ? authUser : profileUser}
+            statusWithAuthUser={statusWithAuthUser}
+            setStatusWithAuthUser={setStatusWithAuthUser}
+            profileFriend={profileFriend}
+          />
         </>
       )}
     </div>

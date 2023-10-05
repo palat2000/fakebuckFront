@@ -26,7 +26,7 @@ function Dropdown() {
       </div>
       {isOpen && (
         <div className="w-64 bg-white absolute right-1 translate-y-1 border rounded-lg shadow-xl p-2">
-          <Link onClick={() => setIsOpen(false)} to="/profile/me">
+          <Link onClick={() => setIsOpen(false)} to={`/profile/${authUser.id}`}>
             <div className=" flex gap-4 p-2 items-center rounded-xl hover:bg-gray-100">
               <Avatar src={authUser.profileImage} className="h-14" />
               <div>

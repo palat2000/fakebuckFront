@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 import ActionButton from "./ActionButton";
-import axios from "axios";
+import axios from "../../config/axios";
 import { useParams } from "react-router-dom";
 
 function ReceiverAction({ setStatusWithAuthUser }) {

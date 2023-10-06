@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ProfileCover from "../features/profile/ProfileCover";
 import ProfileInfo from "../features/profile/ProfileInfo";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import axios from "../config/axios";
 import Loading from "../components/Loading";
 import useAuth from "../hooks/use-auth";
 

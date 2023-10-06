@@ -1,4 +1,4 @@
-function Modal({ title, children, isOpen, onClose }) {
+function Modal({ title, children, isOpen, onClose, minWidth }) {
   if (!isOpen) return null;
 
   return (
@@ -8,7 +8,7 @@ function Modal({ title, children, isOpen, onClose }) {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="bg-white rounded-lg p-4 shadow-xl"
+        className={`bg-white rounded-lg p-4 shadow-xl min-w-[${minWidth}]`}
       >
         <div className="flex justify-between items-center text-xl border-b gap-10 py-2 ">
           <div className="invisible">x</div>

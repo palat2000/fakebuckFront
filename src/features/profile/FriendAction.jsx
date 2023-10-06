@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import ActionButton from "./ActionButton";
-import axios from "axios";
+import axios from "../../config/axios";
 import { toast } from "react-toastify";
 
 function FriendAction({ setStatusWithAuthUser }) {

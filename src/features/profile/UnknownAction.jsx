@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import ActionButton from "./ActionButton";
 import { toast } from "react-toastify";
-import axios from "axios";
+import axios from "../../config/axios";
 
 function UnknownAction({ setStatusWithAuthUser }) {
   const { profileId } = useParams();

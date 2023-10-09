@@ -1,7 +1,6 @@
 import { ImageIcon } from "../../icon";
 import useAuth from "../../hooks/use-auth";
 import { useRef, useState } from "react";
-import axios from "../../config/axios";
 import { toast } from "react-toastify";
 import Loading from "../../components/Loading";
 
@@ -26,7 +25,7 @@ function CreateButton({ children }) {
     </button>
   );
 }
-function PostForm({ onSuccess }) {
+function PostForm({ onSuccess, onSubmit }) {
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -44,7 +43,7 @@ function PostForm({ onSuccess }) {
         formData.append("message", message);
       }
       setLoading(true);
-      await axios.post("/post", formData);
+      await onSubmit(formData);
       onSuccess();
     } catch (err) {
       toast.error(err.message);

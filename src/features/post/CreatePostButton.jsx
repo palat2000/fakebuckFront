@@ -16,7 +16,7 @@ function Button({ children, onClick }) {
   );
 }
 
-function CreatePostButton() {
+function CreatePostButton({ createPost }) {
   const [isOpen, setIsOpen] = useState(false);
   const { authUser } = useAuth();
 
@@ -34,7 +34,7 @@ function CreatePostButton() {
         title="Create post"
         minWidth="500px"
       >
-        <PostForm onSuccess={() => setIsOpen(false)} />
+        <PostForm onSuccess={() => setIsOpen(false)} onSubmit={createPost} />
       </Modal>
     </div>
   );
